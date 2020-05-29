@@ -1,43 +1,62 @@
+import { useState } from "react";
 import Head from "next/head";
 
 export default function Home() {
+  const [width, setWidth] = useState(10);
+  const [height, setHeight] = useState(10);
+
+  const area = width * height;
+  const perimeter = width * 2 + height * 2;
+
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>MobX-State-Tree Demo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <h1 className="title">MobX-State-Tree Demo</h1>
 
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <div className="card">
+            <label for="width">Width</label>
+            <input
+              type="text"
+              name="width"
+              value={width}
+              onChange={(e) => setWidth(e.target.value)}
+            />
+          </div>
+          <div className="card">
+            <label>Height</label>
+            <input
+              type="text"
+              name="height"
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="grid">
+          <a href="" className="card">
+            <h3>
+              Area &rarr; <code>{area}</code>
+            </h3>
           </a>
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          <a href="" className="card">
+            <h3>
+              Perimeter &rarr; <code>{perimeter}</code>
+            </h3>
           </a>
         </div>
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+        <a href="https://infinite.red" target="_blank">
+          Powered by&nbsp;<strong>Infinite Red</strong>
         </a>
       </footer>
 
@@ -132,7 +151,7 @@ export default function Home() {
 
         .card {
           margin: 1rem;
-          flex-basis: 45%;
+          flex-basis: 35%;
           padding: 1.5rem;
           text-align: left;
           color: inherit;
@@ -152,12 +171,25 @@ export default function Home() {
         .card h3 {
           margin: 0 0 1rem 0;
           font-size: 1.5rem;
+          white-space: nowrap;
         }
 
         .card p {
           margin: 0;
           font-size: 1.25rem;
           line-height: 1.5;
+        }
+
+        .card label {
+          flex: 1;
+          margin: 0 1rem 0 0;
+        }
+
+        .card input {
+          margin: 0;
+          padding: 5px 10px;
+          font-size: 14px;
+          width: 60%;
         }
 
         .logo {
