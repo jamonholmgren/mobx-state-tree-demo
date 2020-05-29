@@ -1,13 +1,9 @@
 import { useState } from "react";
 import Head from "next/head";
+import { WidthInput, HeightInput } from "./dimension-input";
+import { AreaResult, PerimeterResult } from "./result";
 
 export default function Home() {
-  const [width, setWidth] = useState(10);
-  const [height, setHeight] = useState(10);
-
-  const area = width * height;
-  const perimeter = width * 2 + height * 2;
-
   return (
     <div className="container">
       <Head>
@@ -19,38 +15,13 @@ export default function Home() {
         <h1 className="title">MobX-State-Tree Demo</h1>
 
         <div className="grid">
-          <div className="card">
-            <label for="width">Width</label>
-            <input
-              type="text"
-              name="width"
-              value={width}
-              onChange={(e) => setWidth(e.target.value)}
-            />
-          </div>
-          <div className="card">
-            <label>Height</label>
-            <input
-              type="text"
-              name="height"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-            />
-          </div>
+          <WidthInput />
+          <HeightInput />
         </div>
 
         <div className="grid">
-          <a href="" className="card">
-            <h3>
-              Area &rarr; <code>{area}</code>
-            </h3>
-          </a>
-
-          <a href="" className="card">
-            <h3>
-              Perimeter &rarr; <code>{perimeter}</code>
-            </h3>
-          </a>
+          <AreaResult />
+          <PerimeterResult />
         </div>
       </main>
 
@@ -60,7 +31,7 @@ export default function Home() {
         </a>
       </footer>
 
-      <style jsx>{`
+      <style global jsx>{`
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
